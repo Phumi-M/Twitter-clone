@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X (Twitter) Clone</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z' fill='%231DA1F2'/></svg>" type="image/svg+xml"/>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <link rel="stylesheet" href="chatbot.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="menu">
+        <div class="menu-top">
+          <div class="nav-section">
+            <div class="logo">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="twitter-logo">
+                <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z" fill="var(--primary-color)"></path>
+              </svg>
+            </div>
+
+            <span class="category active">
+              <i class="material-icons">home</i>
+              <strong>Home</strong>
+            </span>
+
+            <span class="category">
+              <i class="material-icons">tag</i>
+              Explore
+            </span>
+
+            <span class="category">
+              <i class="material-icons">notifications</i>
+              Notifications
+            </span>
+
+            <span class="category">
+              <i class="material-icons">mail_outline</i>
+              Messages
+            </span>
+
+            <span class="category">
+              <i class="material-icons">bookmark_border</i>
+              Bookmarks
+            </span>
+
+            <span class="category">
+              <i class="material-icons">list</i>
+              Lists
+            </span>
+
+            <span class="category">
+              <a href="chatbot.html" style="display:inline-flex;align-items:center;color:inherit;text-decoration:none;">
+                <i class="material-icons">smart_toy</i>
+                Chatbot
+              </a>
+            </span>
+
+            <span class="category">
+              <i class="material-icons">person</i>
+              Profile
+            </span>
+
+            <span class="category">
+              <i class="material-icons">more_horiz</i>
+              More
+            </span>
+          </div>
+
+          <button>Tweet</button>
+        </div>
+
+        <div class="profile-section" id="profileSection">
+          <img
+            src="profile.jpeg"
+            alt="Phumzile Precious"
+            class="profile-avatar-sidebar"
+          />
+
+          <div class="profile-info">
+            <p class="profile-name">Phumzile Precious</p>
+            <small class="profile-handle">@PhumzilePr84368</small>
+          </div>
+          <i class="fas fa-ellipsis-h profile-options"></i>
+
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="#">Add an existing account</a>
+            <div class="dropdown-separator"></div>
+            <a href="#">**Logout @PhumzilePr84368**</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="feed">
+      <div class="timeline-home">
+        <div class="timeline-title-container">
+          <span><strong>Home</strong></span>
+          <i class="fas fa-moon" id="darkModeIcon"></i>
+        </div>
+        <i class="material-icons">auto_awesome</i>
+      </div>
+
+      <div class="timeline_input">
+        <img src="profile.jpeg" alt="profile image" class="post-avatar" />
+        <input type="text" placeholder="What's happening?" />
+      </div>
+
+      <div class="tweet_live">
+        <div class="tweet_tags">
+          <i class="material-icons">image</i>
+          <i class="material-icons">gif_box</i>
+          <i class="material-icons">sort</i>
+          <i class="material-icons">mood</i>
+          <i class="material-icons">pending_actions</i>
+          <i class="material-icons">place</i>
+        </div>
+        <button>Tweet</button>
+      </div>
+
+      <div class="post">
+        <img
+          src="https://placehold.co/48x48/F91880/FFFFFF?text=AI"
+          alt="AI Insights profile image"
+          class="post-avatar"
+        />
+
+        <div class="post-content">
+          <div class="post-header">
+            <span class="username"
+              >AI Insights <i class="fas fa-check-circle verified-icon"></i>
+            </span>
+            <span class="handle">@AIEverywhere</span>
+            <span class="time">10m</span>
+          </div>
+          <p>
+            Just read a fascinating paper on Reinforcement Learning for
+            robotics. The speed of convergence is mind-blowing! Are we ready for
+            fully autonomous systems? #MachineLearning #AI
+          </p>
+
+          <div class="post-actions">
+            <span class="action-button"
+              ><i class="far fa-comment"></i><small>155</small></span
+            >
+            <span class="action-button repost"
+              ><i class="fas fa-retweet"></i><small>4800</small></span
+            >
+            <span class="action-button like"
+              ><i class="far fa-heart"></i><small>25900</small></span
+            >
+            <span class="action-button"><i class="fas fa-share-alt"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <img src="profile.jpeg" alt="ICC profile image" class="post-avatar" />
+        <div class="post-content">
+          <div class="post-header">
+            <span class="username"
+              >ICC <i class="fas fa-check-circle verified-icon"></i
+            ></span>
+            <span class="handle">@ICC</span>
+            <span class="time">18h</span>
+          </div>
+          <p>
+            “The International Artificial Intelligence Hackathon 2025” SIT KMUTT
+          </p>
+          <img
+            src="https://th.bing.com/th/id/OIP.gqaBZE0HEPFei5qEG1VRTQHaEK?w=325&h=182&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+            alt="image"
+            class="post-image-container"
+          />
+          <div class="post-actions">
+            <span class="action-button"
+              ><i class="far fa-comment"></i><small>24</small></span
+            >
+            <span class="action-button repost"
+              ><i class="fas fa-retweet"></i><small>1500</small></span
+            >
+            <span class="action-button like"
+              ><i class="far fa-heart"></i><small>40200</small></span
+            >
+            <span class="action-button"><i class="fas fa-share-alt"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <img
+          src="https://placehold.co/48x48/00BA7C/FFFFFF?text=SD"
+          alt="Software Dev profile image"
+          class="post-avatar"
+        />
+        <div class="post-content">
+          <div class="post-header">
+            <span class="username">Dev Life</span>
+            <span class="handle">@TheCodeMaven</span>
+            <span class="time">30m</span>
+          </div>
+          <p>
+            Spent all morning refactoring legacy code. It's painful, but the
+            performance boost in the new microservice is glorious! Don't skip
+            the clean-up! #SoftwareDevelopment #Coding
+          </p>
+          <iframe
+            width="510"
+            height="315"
+            src="https://www.youtube.com/embed/t2OIbhdRLPA"
+            title="Razer Iskur: The True Gaming Chair - OFFICIAL Trailer"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+          <div class="post-actions">
+            <span class="action-button"
+              ><i class="far fa-comment"></i><small>51</small></span
+            >
+            <span class="action-button repost"
+              ><i class="fas fa-retweet"></i><small>10100</small></span
+            >
+            <span class="action-button like"
+              ><i class="far fa-heart"></i><small>88000</small></span
+            >
+            <span class="action-button"><i class="fas fa-share-alt"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <img
+          src="https://placehold.co/48x48/0F1419/FFFFFF?text=T"
+          alt="Tech News profile image"
+          class="post-avatar"
+        />
+        <div class="post-content">
+          <div class="post-header">
+            <span class="username">Tech Insider</span>
+            <span class="handle">@TechInsider_X</span>
+            <span class="time">5m</span>
+          </div>
+          <p>
+            The new generation of AI chips just dropped, promising 5x
+            performance gains for deep learning models. The future is here. #AI
+            #TechNews
+          </p>
+          <img
+            src="https://placehold.co/500x300/0F1419/FFFFFF?text=New+AI+Chip"
+            alt="New AI Chip image"
+            class="post-image-container"
+          />
+          <div class="post-actions">
+            <span class="action-button"
+              ><i class="far fa-comment"></i><small>89</small></span
+            >
+            <span class="action-button repost"
+              ><i class="fas fa-retweet"></i><small>3</small></span
+            >
+            <span class="action-button like"
+              ><i class="far fa-heart"></i><small>110</small></span
+            >
+            <span class="action-button"><i class="fas fa-share-alt"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <img
+          src="https://placehold.co/48x48/1D9BF0/FFFFFF?text=X"
+          alt="X News profile image"
+          class="post-avatar"
+        />
+        <div class="post-content">
+          <div class="post-header">
+            <span class="username"
+              >Official X Updates
+              <i class="fas fa-check-circle verified-icon"></i
+            ></span>
+            <span class="handle">@X_Updates</span>
+            <span class="time">2h</span>
+          </div>
+          <p>
+            We're rolling out improved search functionality globally this week!
+            Expect more accurate and real-time results. Let us know what you
+            think!
+          </p>
+          <img
+            src="https://tse3.mm.bing.net/th/id/OIP._98cSfAnMh2WkmJoyBohZQHaEA?pid=ImgDet&w=184&h=99&c=7&dpr=1,3&o=7&rm=3"
+            alt="X Search Update image"
+            class="post-image-container"
+          />
+          <div class="post-actions">
+            <span class="action-button"
+              ><i class="far fa-comment"></i><small>43</small></span
+            >
+            <span class="action-button repost"
+              ><i class="fas fa-retweet"></i><small>9</small></span
+            >
+            <span class="action-button like"
+              ><i class="far fa-heart"></i><small>356</small></span
+            >
+            <span class="action-button"><i class="fas fa-share-alt"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <img
+          src="https://placehold.co/48x48/FF5733/FFFFFF?text=E"
+          alt="Environment Advocate profile image"
+          class="post-avatar"
+        />
+        <div class="post-content">
+          <div class="post-header">
+            <span class="username">Eco Warrior</span>
+            <span class="handle">@SaveThePlanet</span>
+            <span class="time">4h</span>
+          </div>
+          <p>
+            Hard to believe how much pollution ends up in our oceans every year.
+            We have to do better. Start small: skip that plastic straw today.
+            #ClimateAction
+          </p>
+          <img
+            src="https://th.bing.com/th/id/OIP.ELW9O7C_my5jdTgL5JMEbwHaD4?w=297&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+            alt="Ocean plastic waste image"
+            class="post-image-container"
+            style="height: 150px"
+          />
+          <div class="post-actions">
+            <span class="action-button"
+              ><i class="far fa-comment"></i><small>51</small></span
+            >
+            <span class="action-button repost"
+              ><i class="fas fa-retweet"></i><small>2100</small></span
+            >
+            <span class="action-button like"
+              ><i class="far fa-heart"></i><small>15700</small></span
+            >
+            <span class="action-button"><i class="fas fa-share-alt"></i></span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <nav class="sidebar-right">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search" />
+      </div>
+
+      <div class="widget subscribe-widget">
+        <h3>Subscribe to Premium</h3>
+        <p>
+          Subscribe to unlock new features and if eligible, receive a share of
+          revenue.
+        </p>
+        <button class="subscribe-button">Subscribe</button>
+      </div>
+
+      <div class="widget news-widget">
+        <h3>Today's News</h3>
+        <div class="news-item">
+          <p>Witness C Reveals Matlala's R500,000 Funding...</p>
+          <small>2 hours ago · News</small>
+        </div>
+        <div class="news-item">
+          <p>
+            South Africans Clash on X Over Individual vs. Collective
+            Boycotts...
+          </p>
+          <small>Trending now · News</small>
+        </div>
+        <a href="#" class="show-more">Show more</a>
+      </div>
+
+      <div class="widget happening-widget">
+        <h3>What's happening</h3>
+
+        <div class="trend-item">
+          <div class="trend-info">
+            <small>Trending in South Africa</small>
+            <p class="trend-name">Kaizer Chiefs</p>
+            <small>2,059 posts</small>
+          </div>
+          <i class="fas fa-ellipsis-h trend-options"></i>
+        </div>
+
+        <div class="trend-item">
+          <div class="trend-info">
+            <small>Trending in South Africa</small>
+            <p class="trend-name">#OgleAshleyBrylnn</p>
+            <small>32.5K posts</small>
+          </div>
+          <i class="fas fa-ellipsis-h trend-options"></i>
+        </div>
+
+        <a href="#" class="show-more">Show more</a>
+      </div>
+
+      <div class="widget who-to-follow-widget">
+        <h3>Who to follow</h3>
+
+        <div class="follow-item">
+          <img
+            src="https://placehold.co/40x40/000000/FFFFFF?text=DT"
+            alt="Donald J. Trump"
+            class="avatar-follow"
+          />
+          <div class="user-info">
+            <p class="user-name">
+              Donald J. Trump <i class="fas fa-check-circle verified-icon"></i>
+            </p>
+            <small class="user-handle">@realDonaldTrump</small>
+          </div>
+          <button class="follow-button">Follow</button>
+        </div>
+
+        <a href="#" class="show-more">Show more</a>
+      </div>
+
+      <footer class="footer-links">
+        <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a> |
+        <a href="#">Cookie Policy</a> | <a href="#">Accessibility</a> |
+        <a href="#">Ads info</a> | <a href="#">More ...</a> |
+        <span>© 2025 X Corp.</span>
+      </footer>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="chatbot.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- AI Chatbot -->
+     <!-- This is a cursor feature added as one of my innovation -->
+    <div class="chatbot-container">
+      <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+          <span>AI Assistant</span>
+          <button class="close-chat" id="closeChat">&times;</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+          <!-- Messages will be injected here by JavaScript -->
+        </div>
+        <div class="chat-footer">
+          <form id="chatForm">
+            <input
+              type="text"
+              id="chatInput"
+              placeholder="Ask me something..."
+            />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+      <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="material-icons">smart_toy</i>
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

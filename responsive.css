@@ -1,0 +1,99 @@
+
+/* 1. Tablet View (Max Width: 1200px) */
+
+@media screen and (max-width: 1200px) {
+    body {
+        grid-template-columns: minmax(200px, 275px) minmax(400px, 600px) 0px; 
+        justify-content: center;
+    }
+
+    .sidebar-right {
+        display: none;
+    }
+}
+
+/* 2. Narrow Desktop/Large Mobile Landscape (Max Width: 980px) */
+
+
+@media screen and (max-width: 980px) {
+    body {
+        grid-template-columns: 88px minmax(400px, 600px); 
+    }
+
+    .navbar {
+        width: 88px; 
+        padding: 0;
+        align-items: center;
+    }
+
+    .category strong, .category span {
+        display: none;
+    }
+
+    .category {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        margin: 5px 0;
+        justify-content: center;
+    }
+
+    .category i {
+        margin-right: 0;
+    }
+
+    
+    .menu button {
+        width: 50px; 
+        height: 50px;
+        padding: 0;
+        border-radius: 50%; 
+        margin: 10px auto; 
+        font-size: 0; 
+    }
+
+    .menu button::before {
+        content: "\e906"; 
+        font-family: 'Material Icons';
+        font-size: 24px;
+        color: white;
+    }
+
+    
+    .profile-section {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        margin: 10px auto;
+        justify-content: center;
+    }
+    
+    .profile-info, .profile-options {
+        display: none;
+    }
+
+    .profile-avatar-sidebar {
+        margin: 0; 
+    }
+}
+
+
+/* 3. Small Mobile View (Max Width: 600px) */
+
+
+@media screen and (max-width: 600px) {
+    body {
+ 
+        grid-template-columns: 100%;
+    }
+    
+    .navbar {
+        display: none;
+    }
+
+    .feed {
+        border-left: none;
+        border-right: none;
+        max-width: none;
+    }
+}

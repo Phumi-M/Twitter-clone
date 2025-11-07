@@ -1,0 +1,735 @@
+:root {
+    /* Standard X/Twitter Colors (Light Mode) */
+    --primary-color: #1D9BF0; /* X/Twitter Blue */
+    --text-color: #0F1419; /* Darkest Text */
+    --secondary-text: #536471; /* Secondary Gray Text/Handles */
+    --background-color: #FFFFFF; /* White Background */
+    --hover-color: #0F14190D; /* Very light gray for hover (opacity on dark text) */
+    --border-color: #EFF3F4; /* Light border/divider color */
+
+    /* Action Colors */
+    --retweet-color: #00BA7C;
+    --like-color: #F91880;
+
+    /* Widget specific colors */
+    --widget-bg: #F7F9F9; 
+    --dropdown-bg: #FFFFFF;
+    --dropdown-border: #EFF3F4;
+    --dropdown-text: #0F1419;
+    --dropdown-hover-bg: #F7F9F9;
+    --dropdown-footer-text: #536471;
+}
+
+/* Dark Mode Color Palette */
+body.dark-mode {
+    --primary-color: #1D9BF0; 
+    --text-color: #E7E9EA; 
+    --secondary-text: #71767B;
+    --background-color: #000000;
+    --hover-color: #FFFFFF0D; 
+    --border-color: #2F3336; 
+
+    /* Action Colors */
+    --retweet-color: #00BA7C;
+    --like-color: #F91880;
+
+    /* Widget specific colors */
+    --widget-bg: #16181C; 
+    --dropdown-bg: #000000;
+    --dropdown-border: #2F3336;
+    --dropdown-text: #E7E9EA;
+    --dropdown-hover-bg: #16181C;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: grid;
+    grid-template-columns: minmax(400px, 600px) 350px;
+    justify-content: center;
+    min-height: 100vh;
+    padding-left: 275px; 
+    gap: 30px;
+    overflow-y: scroll; 
+}
+
+.feed {
+    width: 100%;
+    max-width: 600px;
+    margin-right: 30px;
+}
+
+/*Left Sidebar Styling */
+.navbar {
+    width: 275px;
+    min-height: 100vh;
+    padding: 0 12px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column; 
+    padding-bottom: 10px;
+    z-index: 1000;
+    background-color: var(--background-color);
+}
+
+
+.logo {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.logo:hover {
+    background-color: var(--hover-color);
+}
+
+.twitter-logo {
+    width: 30px;
+    height: 30px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+
+.menu-top {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.nav-section {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.category {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    width: fit-content; 
+    font-weight: normal; 
+}
+.category.active {
+    font-weight: bold;
+}
+
+.category:hover {
+    background-color: var(--hover-color);
+}
+
+.category i {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.menu button { 
+    background-color: var(--primary-color); 
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 15px 0;
+    width: 90%;
+    margin: 15px auto; 
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.menu button:hover {
+    background-color: #1A8CD8; 
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px; 
+    margin-bottom: 0; 
+    border-radius: 9999px;
+    cursor: pointer;
+    position: relative; 
+    transition: background-color 0.2s;
+}
+
+.profile-section:hover {
+    background-color: var(--hover-color);
+}
+
+.profile-avatar-sidebar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    overflow: hidden; 
+}
+
+.profile-name {
+    font-weight: bold;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-color);
+}
+
+.profile-handle {
+    font-size: 15px;
+    color: var(--secondary-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-options {
+    color: var(--secondary-text);
+    font-size: 15px;
+    margin-left: auto;
+}
+
+/* Dropdown Styles */
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    bottom: 100%; 
+    left: 0;
+    background-color: var(--dropdown-bg);
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 100;
+    border: 1px solid var(--dropdown-border);
+    margin-bottom: 8px; 
+    overflow: hidden; 
+}
+
+.profile-dropdown a {
+    color: var(--dropdown-text);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    font-weight: normal;
+    transition: background-color 0.2s;
+}
+.profile-dropdown a:hover {
+    background-color: var(--dropdown-hover-bg);
+}
+.dropdown-separator {
+    height: 1px;
+    background-color: var(--dropdown-border);
+    margin: 4px 0;
+}
+.profile-dropdown.show {
+    display: block;
+}
+
+/* Dark mode specific styles for the dropdown */
+body.dark-mode .profile-dropdown {
+    background-color: var(--dropdown-bg);
+    border-color: var(--dropdown-border);
+}
+body.dark-mode .profile-dropdown a {
+    color: var(--dropdown-text);
+}
+body.dark-mode .profile-dropdown a:hover {
+    background-color: var(--dropdown-hover-bg);
+}
+
+
+
+/* Main Feed Styling */
+
+.feed {
+    max-width: 600px;
+    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+}
+
+/* Home Header (Sticky)*/
+.timeline-home {
+    margin: 0; 
+    padding: 10px 15px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(8px);
+}
+
+/* Container for the 'Home' title and dark mode icon */
+.timeline-title-container {
+    display: flex;
+    align-items: center;
+    gap: 450px; 
+}
+
+/* Styling for the new dark mode icon */
+#darkModeIcon {
+    color: var(--secondary-text);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+
+.timeline-home i {
+    color: var(--primary-color);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+.timeline-home i:hover {
+    background-color: #E0F2FF; 
+}
+
+/* Dark mode adjustment for sticky header */
+body.dark-mode .timeline-home {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+/* Post Input Area */
+.timeline_input {
+    display: flex;
+    padding: 15px; 
+    border-bottom: 1px solid var(--border-color);
+}
+
+.timeline_input img, .post-avatar { 
+    border-radius: 50%;
+    width: 48px; 
+    height: 48px;
+    margin-right: 15px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.timeline_input input {
+    font-size: 20px;
+    border: none;
+    padding: 5px 0;
+    flex-grow: 1;
+    outline: none;
+    color: var(--text-color);
+    background-color: transparent; 
+}
+body.dark-mode .timeline_input input {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+.timeline_input input::placeholder {
+    color: var(--secondary-text);
+}
+
+/* Tweet Live Controls */
+.tweet_live {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px 10px 80px; 
+    border-bottom: 8px solid var(--border-color); 
+}
+.tweet_tags {
+    margin-left: 0; 
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+.tweet_tags i {
+    margin-right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+.tweet_tags i:hover {
+    background-color: #E0F2FF; 
+}
+.tweet_live button {
+    width: 80px;
+    height: 35px;
+    border-radius: 9999px;
+    background-color: var(--primary-color);
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Post Feed Styling */
+.post {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.post:hover {
+    background-color: var(--hover-color);
+}
+
+.post-content {
+    flex-grow: 1;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+.username {
+    font-weight: bold;
+    color: var(--text-color); 
+    margin-right: 5px;
+    line-height: 1.3;
+}
+.handle, .time {
+    color: var(--secondary-text); 
+    font-size: 15px;
+    margin-right: 5px;
+    line-height: 1.3;
+}
+.verified-icon {
+    color: var(--primary-color);
+    font-size: 14px;
+    margin-left: 3px;
+}
+
+.post p {
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+/* IMAGE UPDATE: Styling for actual <img> tags */
+.post-image-container {
+    width: 100%;
+    height: 300px; 
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 10px;
+    object-fit: cover; 
+    display: block; 
+}
+
+
+/*Post Actions Bar Styling  */
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 90%; 
+    margin-top: 10px;
+    padding-right: 20px;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    color: var(--secondary-text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.action-button i {
+    font-size: 16px;
+    margin-right: 8px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.action-button small {
+    font-size: 13px;
+}
+
+/* Hover Effects*/
+
+/* Comment/Share Hover (uses the primary blue color) */
+.action-button:not(.repost):not(.like):hover {
+    color: var(--primary-color);
+}
+.action-button:not(.repost):not(.like):hover i {
+    background-color: #E0F2FF; 
+}
+
+/* Retweet/Repost Hover (uses the green color) */
+.action-button.repost:hover {
+    color: var(--retweet-color); 
+}
+.action-button.repost:hover i {
+    background-color: #E6F7F3; 
+}
+
+/* Like/Heart Hover (uses the red color) */
+.action-button.like:hover {
+    color: var(--like-color); 
+}
+.action-button.like:hover i {
+    background-color: #FFE6F1; 
+}
+
+/* Active States Styling */
+
+/* Active Like (Heart) Button */
+.action-button.like.liked {
+    color: var(--like-color);
+}
+
+.action-button.like.liked i {
+    color: var(--like-color); 
+}
+
+/* 3. Right Sidebar Styling */
+
+
+.sidebar-right {
+    width: 350px;
+    padding: 0 15px;
+    position: sticky;
+    top: -650px; 
+    margin-top: -150px; /* Pull the sidebar up to show more content */
+    height: calc(100vh + 650px); 
+    background-color: var(--background-color);
+    transition: transform 0.2s;
+}
+
+/* Container for the sidebar content */
+.sidebar-right > * {
+    margin-top: 150px;
+}
+
+.search-box {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 10px 0;
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    position: relative; 
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-text);
+    font-size: 18px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border-radius: 9999px;
+    border: none;
+    background-color: var(--border-color); 
+    color: var(--text-color);
+    outline: none;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.search-box input:focus {
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+}
+body.dark-mode .search-box input:focus {
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+}
+
+
+.widget {
+    background-color: var(--widget-bg); 
+    border-radius: 15px;
+    margin-top: 15px;
+    overflow: hidden; 
+}
+
+.widget h3 {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 12px 15px 5px 15px; 
+    color: var(--text-color); 
+}
+
+/* Subscribe Widget */
+.subscribe-widget p {
+    padding: 0 15px 10px 15px;
+    font-size: 15px;
+}
+.subscribe-button {
+    background-color: var(--text-color); 
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 16px;
+    margin: 0 15px 12px 15px; 
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.subscribe-button:hover {
+    background-color: #272727;
+}
+
+body.dark-mode .subscribe-button {
+    background-color: #EFF3F4;
+    color: #0F1419;
+}
+
+/* News/Trend/Follow Items */
+.news-item, .trend-item, .follow-item {
+    transition: background-color 0.2s;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-item:hover, .trend-item:hover, .follow-item:hover {
+    background-color: var(--hover-color);
+}
+.news-item small, .trend-info small {
+    color: var(--secondary-text);
+    font-size: 13px;
+}
+
+.trend-options {
+    color: var(--secondary-text); 
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: color 0.2s, background-color 0.2s;
+    margin-left: 10px; 
+    flex-shrink: 0;
+}
+
+.trend-options:hover {
+    color: var(--primary-color); 
+    background-color: #E0F2FF; 
+}
+
+/* Who to Follow Widget */
+.avatar-follow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.follow-item .user-info {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+.follow-item .user-name {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.follow-item .user-handle {
+    color: var(--secondary-text);
+}
+
+.follow-button {
+    background-color: var(--text-color); 
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s;
+}
+.follow-button:hover {
+    background-color: #272727;
+}
+
+body.dark-mode .follow-button {
+    background-color: #EFF3F4;
+    color: #0F1419;
+}
+
+/* Show More Link */
+.show-more {
+    display: block;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 12px 15px;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+.show-more:hover {
+    background-color: var(--hover-color);
+}
+
+/* Footer Links */
+.footer-links {
+    color: var(--secondary-text);
+    padding-bottom: 30px;
+    font-size: 13px;
+    margin-top: 15px;
+}
+.footer-links a {
+    color: var(--secondary-text);
+    text-decoration: none;
+    margin-right: 5px;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
